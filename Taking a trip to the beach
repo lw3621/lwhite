@@ -1,0 +1,117 @@
+echo "# lwhite" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/lw3621/lwhite.git
+git push -u origin main
+
+/**
+ * This code is utilized for creating future trips and how much it will cost for the trip.
+ * The first part of the code is my blueprint with the section being the main driver of the code.
+ * This has been broken out below.
+ * @author luiswhite
+ *
+ */
+
+package lwhitemod2;
+
+import java.text.NumberFormat;
+
+public class Beach {
+	
+	private String hotelName;
+	private String city;
+	private int numDays;
+	private double cost;
+	
+	public Beach(String hotelName, String city, int numDays, double cost) {
+		
+		this.hotelName=hotelName;
+		this.city=city;
+		this.numDays=numDays;
+		this.cost=cost;
+		
+	}
+	
+	public Beach(String hotelName, String city) {
+		this.hotelName="";
+		this.city="";
+		
+	}
+	
+	public Beach()
+	{
+		
+	}
+	
+	public String toString()
+	{
+		NumberFormat nf = NumberFormat.getCurrencyInstance();
+		return "You are staying at the " + hotelName + " in " + city + " for " + numDays + 
+				" days at a cost of " + nf.format(cost);
+	
+	}
+
+	public String getHotelName() {
+		return hotelName;
+	}
+
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public int getNumDays() {
+		return numDays;
+	}
+
+	public void setNumDays(int numDays) {
+		this.numDays = numDays;
+	}
+
+	public double getCost() {
+		return cost;
+	}
+
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+	
+}
+
+//Below is the driver.
+
+package lwhitemod2;
+
+import java.util.*;
+
+public class BeachDriver {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		Beach book = new Beach("Hilton", "Myrtle Beach", 4, 560);
+		System.out.println(book.toString());
+		
+		Beach book2 = new Beach("Marriott", "San Diego", 10, 1200);
+		System.out.println(book2.toString());
+		
+		Beach book3 = new Beach("InterContinental", "Miami Beach", 0, 0);
+		System.out.println(book3.toString());
+		
+		book3.setNumDays(7);
+		book3.setCost(1800);
+		System.out.println(book3.toString());
+	
+
+	}
+
+}
+
